@@ -1,0 +1,11 @@
+{
+  "version": "sixth global rewrite",
+  "source": "time4bets-rewritten-fifth-version.zip",
+  "changes": [
+    "rewritten EN and AR texts again",
+    "reshuffled section order on main pages",
+    "kept existing images only",
+    "kept redirect page and previous mobile fixes",
+    "no responsive image duplicates generated"
+  ]
+}
