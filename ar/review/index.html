@@ -233,11 +233,175 @@ main div[style*="overflow:hidden"] > img {
     max-height: none !important;
   }
 }
+
+
+/* === FINAL IMAGE FIT PATCH: keeps every img fully visible inside its real layout block === */
+.hero-bg.fit-hero-wide,
+.page-hero-bg.fit-page-hero{
+  display:block!important;
+  background:radial-gradient(circle at 78% 50%,rgba(0,200,150,.14),rgba(7,20,14,.94) 52%,rgba(7,20,14,1) 100%)!important;
+}
+.hero-bg.fit-hero-wide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero img{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  width:min(58vw,760px)!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero.fit-page-wide img{
+  width:min(74vw,980px)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide img{
+  object-position:left center!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero img{
+  right:auto!important;
+  left:0!important;
+  object-position:left center!important;
+}
+.hero-bg.fit-hero-wide::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+.page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+.img-section{
+  align-items:center!important;
+}
+.section-img-placeholder.fit-media,
+.img-frame.fit-media,
+.image-frame.fit-media{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border-radius:var(--radius-lg)!important;
+  border:1px solid var(--border)!important;
+  background:radial-gradient(circle at center,rgba(0,200,150,.12),rgba(15,36,25,.96) 62%,rgba(7,20,14,.98) 100%)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.34)!important;
+}
+.section-img-placeholder.fit-media{
+  --media-ratio:1000 / 686;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:var(--media-ratio)!important;
+  padding:14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+}
+.section-img-placeholder.fit-standard{--media-ratio:1000 / 686;}
+.section-img-placeholder.fit-wide{--media-ratio:1500 / 576;}
+.section-img-placeholder.fit-banner{--media-ratio:1100 / 550;}
+.section-img-placeholder.fit-phone{
+  --media-ratio:800 / 1071;
+  width:min(100%,430px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:16px!important;
+}
+.section-img-placeholder.fit-media>img,
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:calc(var(--radius-lg) - 6px)!important;
+  background:transparent!important;
+}
+.img-frame.fit-media,
+.image-frame.fit-media{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+}
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  height:auto!important;
+  max-height:none!important;
+}
+.game-card .game-thumb{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  aspect-ratio:1 / 1!important;
+  flex:0 0 52px!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.game-card .game-thumb img{
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media (max-width:900px){
+  .page-hero-bg.fit-page-hero img,
+  .page-hero-bg.fit-page-hero.fit-page-wide img{
+    width:100%!important;
+    right:0!important;
+    left:0!important;
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-bg.fit-hero-wide img{
+    object-position:center center!important;
+    opacity:.44!important;
+  }
+  .section-img-placeholder.fit-media{
+    padding:10px!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,360px)!important;
+  }
+}
+@media (max-width:600px){
+  .section-img-placeholder.fit-media{
+    width:100%!important;
+    aspect-ratio:var(--media-ratio)!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,310px)!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "مراجعة Time4Bets – الرياضة والكازينو والتطبيق والأمان", "description": "مراجعة Time4Bets تغطي المراهنات الرياضية، أقسام الكازينو، الوصول عبر الهاتف، المكافآت، برنامج VIP، المدفوعات، الحدود واللعب المسؤول.", "url": "../../ar/review/", "inLanguage": "ar-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "../../ar/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "../../ar/"}, {"@type": "ListItem", "position": 2, "name": "مراجعة Time4Bets – الرياضة والكازينو والتطبيق والأمان", "item": "../../ar/review/"}]}</script></head><body dir="rtl" lang="ar"><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="../../ar/"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="../../img/logo.webp" width="360"/></a><nav class="main-nav"><a href="../../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a class="active" href="../../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn" href="../../review/"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn active" href="../../ar/review/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="../../play-and-win/" rel="nofollow noopener">سجل الآن</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a href="../../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a class="active" href="../../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a><a class="btn btn-primary" href="../../play-and-win/" rel="nofollow noopener" style="margin-top:16px">سجل الآن</a></nav><main id="main-content">
-<section class="page-hero hero-review"><div class="page-hero-bg"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="741" loading="eager" src="../../img/review-hero.webp" width="1300"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../../">الرئيسية</a><span>/</span><span>المراجعة</span></div><h1>مراجعة <span>Time4Bets</span></h1></div></div></section>
-<section class="section"><div class="container"><div class="img-section"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">مراجعة المنصة</div><h2>ما الذي تفحصه <span class="text-accent">المراجعة؟</span></h2><p>تركز مراجعة Time4Bets على ما يحتاجه اللاعب قبل فتح الحساب: سهولة الرياضة، تنوع الكازينو، وضوح الدفع، الوصول عبر الهاتف، التحقق، شروط المكافآت وأدوات اللعب المسؤول.</p><p>الجمع بين الرياضة والكازينو في حساب واحد مريح، لكنه يجعل وضع الحدود مهماً لأن اللعب المباشر والكازينو يستخدمان المحفظة نفسها.</p></div><div class="section-img-placeholder"><img alt="مراجعة ألعاب Time4Bets" decoding="async" height="686" loading="lazy" src="../../img/review-games.webp" width="1000"/></div></div><div class="pros-cons"><div class="pros"><h3>✅ نقاط قوية</h3><ul><li>رياضة وكازينو في حساب واحد</li><li>وصول جيد عبر الهاتف</li><li>طرق دفع رقمية عند توفرها</li><li>صفحات واضحة للتسجيل والسحب</li><li>مناسب لمن يراجع الشروط أولاً</li></ul></div><div class="cons"><h3>❌ نقاط يجب الانتباه لها</h3><ul><li>شروط المكافأة قد تؤثر على السحب</li><li>KYC قد يكون مطلوباً قبل أول سحب</li><li>طرق الدفع تختلف حسب الحساب والمنطقة</li><li>المراهنات المباشرة تحتاج ضبط ميزانية</li><li>VIP لا يجب أن يزيد حجم الرهان</li></ul></div></div></div></section>
+<section class="page-hero hero-review"><div class="page-hero-bg fit-page-hero"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="741" loading="eager" src="../../img/review-hero.webp" width="1300"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../../">الرئيسية</a><span>/</span><span>المراجعة</span></div><h1>مراجعة <span>Time4Bets</span></h1></div></div></section>
+<section class="section"><div class="container"><div class="img-section"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">مراجعة المنصة</div><h2>ما الذي تفحصه <span class="text-accent">المراجعة؟</span></h2><p>تركز مراجعة Time4Bets على ما يحتاجه اللاعب قبل فتح الحساب: سهولة الرياضة، تنوع الكازينو، وضوح الدفع، الوصول عبر الهاتف، التحقق، شروط المكافآت وأدوات اللعب المسؤول.</p><p>الجمع بين الرياضة والكازينو في حساب واحد مريح، لكنه يجعل وضع الحدود مهماً لأن اللعب المباشر والكازينو يستخدمان المحفظة نفسها.</p></div><div class="section-img-placeholder fit-media fit-standard"><img alt="مراجعة ألعاب Time4Bets" decoding="async" height="686" loading="lazy" src="../../img/review-games.webp" width="1000"/></div></div><div class="pros-cons"><div class="pros"><h3>✅ نقاط قوية</h3><ul><li>رياضة وكازينو في حساب واحد</li><li>وصول جيد عبر الهاتف</li><li>طرق دفع رقمية عند توفرها</li><li>صفحات واضحة للتسجيل والسحب</li><li>مناسب لمن يراجع الشروط أولاً</li></ul></div><div class="cons"><h3>❌ نقاط يجب الانتباه لها</h3><ul><li>شروط المكافأة قد تؤثر على السحب</li><li>KYC قد يكون مطلوباً قبل أول سحب</li><li>طرق الدفع تختلف حسب الحساب والمنطقة</li><li>المراهنات المباشرة تحتاج ضبط ميزانية</li><li>VIP لا يجب أن يزيد حجم الرهان</li></ul></div></div></div></section>
 <div class="divider"></div>
-<section class="section bg-alt"><div class="container"><div class="img-section reverse"><div class="section-content"><h2>الكازينو <span class="text-accent">حسب الفئة</span></h2><p>السلوتس هي الأسرع وغالباً ترتبط بقواعد مساهمة المكافآت. البلاك جاك والروليت والبكاراه المباشرة تناسب من يفضل الطاولات وحدوداً أوضح للجولات.</p><p>التقييم المفيد يجب أن ينظر إلى سرعة التحميل، أسماء المزودين، الفلاتر، مساهمة اللعبة في الرهان وسهولة قراءة القواعد.</p></div><div class="section-img-placeholder"><img alt="برنامج VIP في Time4Bets" decoding="async" height="686" loading="lazy" src="../../img/vip-program.webp" width="1000"/></div></div></div></section>
+<section class="section bg-alt"><div class="container"><div class="img-section reverse"><div class="section-content"><h2>الكازينو <span class="text-accent">حسب الفئة</span></h2><p>السلوتس هي الأسرع وغالباً ترتبط بقواعد مساهمة المكافآت. البلاك جاك والروليت والبكاراه المباشرة تناسب من يفضل الطاولات وحدوداً أوضح للجولات.</p><p>التقييم المفيد يجب أن ينظر إلى سرعة التحميل، أسماء المزودين، الفلاتر، مساهمة اللعبة في الرهان وسهولة قراءة القواعد.</p></div><div class="section-img-placeholder fit-media fit-standard"><img alt="برنامج VIP في Time4Bets" decoding="async" height="686" loading="lazy" src="../../img/vip-program.webp" width="1000"/></div></div></div></section>
 <div class="divider"></div>
 <section class="section bg-alt"><div class="container"><div class="cta-strip"><h2>تابع بعد <span class="text-accent">قراءة الشروط</span></h2><p>افتح مسار اللعب فقط بعد مراجعة المكافآت والدفع والحدود المسؤولة.</p><a class="btn btn-primary btn-lg" href="../../play-and-win/" rel="nofollow noopener">تابع</a></div></div></section>
 <div class="divider"></div>

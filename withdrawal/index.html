@@ -233,9 +233,173 @@ main div[style*="overflow:hidden"] > img {
     max-height: none !important;
   }
 }
+
+
+/* === FINAL IMAGE FIT PATCH: keeps every img fully visible inside its real layout block === */
+.hero-bg.fit-hero-wide,
+.page-hero-bg.fit-page-hero{
+  display:block!important;
+  background:radial-gradient(circle at 78% 50%,rgba(0,200,150,.14),rgba(7,20,14,.94) 52%,rgba(7,20,14,1) 100%)!important;
+}
+.hero-bg.fit-hero-wide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero img{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  width:min(58vw,760px)!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero.fit-page-wide img{
+  width:min(74vw,980px)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide img{
+  object-position:left center!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero img{
+  right:auto!important;
+  left:0!important;
+  object-position:left center!important;
+}
+.hero-bg.fit-hero-wide::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+.page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+.img-section{
+  align-items:center!important;
+}
+.section-img-placeholder.fit-media,
+.img-frame.fit-media,
+.image-frame.fit-media{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border-radius:var(--radius-lg)!important;
+  border:1px solid var(--border)!important;
+  background:radial-gradient(circle at center,rgba(0,200,150,.12),rgba(15,36,25,.96) 62%,rgba(7,20,14,.98) 100%)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.34)!important;
+}
+.section-img-placeholder.fit-media{
+  --media-ratio:1000 / 686;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:var(--media-ratio)!important;
+  padding:14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+}
+.section-img-placeholder.fit-standard{--media-ratio:1000 / 686;}
+.section-img-placeholder.fit-wide{--media-ratio:1500 / 576;}
+.section-img-placeholder.fit-banner{--media-ratio:1100 / 550;}
+.section-img-placeholder.fit-phone{
+  --media-ratio:800 / 1071;
+  width:min(100%,430px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:16px!important;
+}
+.section-img-placeholder.fit-media>img,
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:calc(var(--radius-lg) - 6px)!important;
+  background:transparent!important;
+}
+.img-frame.fit-media,
+.image-frame.fit-media{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+}
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  height:auto!important;
+  max-height:none!important;
+}
+.game-card .game-thumb{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  aspect-ratio:1 / 1!important;
+  flex:0 0 52px!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.game-card .game-thumb img{
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media (max-width:900px){
+  .page-hero-bg.fit-page-hero img,
+  .page-hero-bg.fit-page-hero.fit-page-wide img{
+    width:100%!important;
+    right:0!important;
+    left:0!important;
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-bg.fit-hero-wide img{
+    object-position:center center!important;
+    opacity:.44!important;
+  }
+  .section-img-placeholder.fit-media{
+    padding:10px!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,360px)!important;
+  }
+}
+@media (max-width:600px){
+  .section-img-placeholder.fit-media{
+    width:100%!important;
+    aspect-ratio:var(--media-ratio)!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,310px)!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Time4Bets Withdrawal Guide – Cashout Methods & Checks", "description": "Time4Bets withdrawal guide explaining payout routes, KYC review, bonus restrictions, card transfers, crypto cashout, bank payments and timing factors.", "url": "../withdrawal/", "inLanguage": "en-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "../"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "../"}, {"@type": "ListItem", "position": 2, "name": "Time4Bets Withdrawal Guide – Cashout Methods & Checks", "item": "../withdrawal/"}]}</script></head><body><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="../"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="../img/logo.webp" width="360"/></a><nav class="main-nav"><a href="../"><span class="nav-icon">🏠</span>Home</a><a href="../app/"><span class="nav-icon">📱</span>App</a><a href="../register/"><span class="nav-icon">✍️</span>Register</a><a class="active" href="../withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="../review/"><span class="nav-icon">⭐</span>Review</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn active" href="../withdrawal/"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn" href="../ar/withdrawal/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener">Register Now</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a href="../"><span class="nav-icon">🏠</span>Home</a><a href="../app/"><span class="nav-icon">📱</span>App</a><a href="../register/"><span class="nav-icon">✍️</span>Register</a><a class="active" href="../withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="../review/"><span class="nav-icon">⭐</span>Review</a><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener" style="margin-top:16px">Register Now</a></nav><main id="main-content">
-<section class="page-hero hero-withdrawal"><div class="page-hero-bg"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="741" loading="eager" src="../img/withdrawal-hero.webp" width="1300"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../">Home</a><span>/</span><span>Withdrawal</span></div><h1>Time4Bets <span>Withdrawal Guide</span></h1></div></div></section>
-<section class="section"><div class="container"><div class="text-center"><h2 class="section-title">Payout Routes <span class="text-accent">Compared</span></h2><p class="section-sub">Withdrawals depend on method availability, account status, bonus progress and payment provider checks.</p></div><div class="payment-grid"><div class="payment-card"><span class="payment-icon">💳</span><h3>Cards</h3><p>Familiar option, but issuer checks and banking days can affect timing.</p></div><div class="payment-card"><span class="payment-icon">₿</span><h3>Bitcoin</h3><p>Fast wallet-based route when address, network and account review are correct.</p></div><div class="payment-card"><span class="payment-icon">💵</span><h3>Stablecoins</h3><p>Useful for users who prefer predictable token value during transfer.</p></div><div class="payment-card"><span class="payment-icon">🏦</span><h3>Bank transfer</h3><p>Common for larger payouts, with stricter bank detail requirements.</p></div><div class="payment-card"><span class="payment-icon">📲</span><h3>E-wallets</h3><p>Convenient when supported, but availability can differ by account and region.</p></div></div><div class="img-frame" style="margin-top:40px;border-radius:16px;overflow:hidden;"><img alt="Time4Bets payment methods and payout routes" decoding="async" height="550" loading="lazy" src="../img/withdrawal-methods.webp" width="1100"/></div></div></section>
+<section class="page-hero hero-withdrawal"><div class="page-hero-bg fit-page-hero"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="741" loading="eager" src="../img/withdrawal-hero.webp" width="1300"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../">Home</a><span>/</span><span>Withdrawal</span></div><h1>Time4Bets <span>Withdrawal Guide</span></h1></div></div></section>
+<section class="section"><div class="container"><div class="text-center"><h2 class="section-title">Payout Routes <span class="text-accent">Compared</span></h2><p class="section-sub">Withdrawals depend on method availability, account status, bonus progress and payment provider checks.</p></div><div class="payment-grid"><div class="payment-card"><span class="payment-icon">💳</span><h3>Cards</h3><p>Familiar option, but issuer checks and banking days can affect timing.</p></div><div class="payment-card"><span class="payment-icon">₿</span><h3>Bitcoin</h3><p>Fast wallet-based route when address, network and account review are correct.</p></div><div class="payment-card"><span class="payment-icon">💵</span><h3>Stablecoins</h3><p>Useful for users who prefer predictable token value during transfer.</p></div><div class="payment-card"><span class="payment-icon">🏦</span><h3>Bank transfer</h3><p>Common for larger payouts, with stricter bank detail requirements.</p></div><div class="payment-card"><span class="payment-icon">📲</span><h3>E-wallets</h3><p>Convenient when supported, but availability can differ by account and region.</p></div></div><div class="img-frame fit-media fit-banner" style="margin-top:40px;border-radius:16px;overflow:hidden;"><img alt="Time4Bets payment methods and payout routes" decoding="async" height="550" loading="lazy" src="../img/withdrawal-methods.webp" width="1100"/></div></div></section>
 <div class="divider"></div>
 <section class="section bg-alt"><div class="container"><div class="text-center"><h2 class="section-title">How Cashout <span class="text-accent">Should Be Prepared</span></h2></div><div class="steps-grid" style="margin-top:40px;"><div class="step-card"><div class="step-num">01</div><div class="step-icon">🔐</div><h3>Open the wallet</h3><p>Check real balance, bonus balance, pending bets and unfinished wagering before starting a withdrawal request.</p></div><div class="step-card"><div class="step-num">02</div><div class="step-icon">✅</div><h3>Clear verification</h3><p>Upload requested documents early. Missing KYC is one of the most common reasons cashout takes longer.</p></div><div class="step-card"><div class="step-num">03</div><div class="step-icon">💳</div><h3>Choose a method</h3><p>Use a payout route that matches your deposit history, account ownership and available limits.</p></div><div class="step-card"><div class="step-num">04</div><div class="step-icon">📌</div><h3>Confirm details</h3><p>Review amount, card, bank data, wallet network or address before submitting the request.</p></div></div></div></section>
 <div class="divider"></div>

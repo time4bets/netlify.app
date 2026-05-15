@@ -233,8 +233,172 @@ main div[style*="overflow:hidden"] > img {
     max-height: none !important;
   }
 }
+
+
+/* === FINAL IMAGE FIT PATCH: keeps every img fully visible inside its real layout block === */
+.hero-bg.fit-hero-wide,
+.page-hero-bg.fit-page-hero{
+  display:block!important;
+  background:radial-gradient(circle at 78% 50%,rgba(0,200,150,.14),rgba(7,20,14,.94) 52%,rgba(7,20,14,1) 100%)!important;
+}
+.hero-bg.fit-hero-wide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero img{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  width:min(58vw,760px)!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero.fit-page-wide img{
+  width:min(74vw,980px)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide img{
+  object-position:left center!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero img{
+  right:auto!important;
+  left:0!important;
+  object-position:left center!important;
+}
+.hero-bg.fit-hero-wide::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+.page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+.img-section{
+  align-items:center!important;
+}
+.section-img-placeholder.fit-media,
+.img-frame.fit-media,
+.image-frame.fit-media{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border-radius:var(--radius-lg)!important;
+  border:1px solid var(--border)!important;
+  background:radial-gradient(circle at center,rgba(0,200,150,.12),rgba(15,36,25,.96) 62%,rgba(7,20,14,.98) 100%)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.34)!important;
+}
+.section-img-placeholder.fit-media{
+  --media-ratio:1000 / 686;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:var(--media-ratio)!important;
+  padding:14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+}
+.section-img-placeholder.fit-standard{--media-ratio:1000 / 686;}
+.section-img-placeholder.fit-wide{--media-ratio:1500 / 576;}
+.section-img-placeholder.fit-banner{--media-ratio:1100 / 550;}
+.section-img-placeholder.fit-phone{
+  --media-ratio:800 / 1071;
+  width:min(100%,430px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:16px!important;
+}
+.section-img-placeholder.fit-media>img,
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:calc(var(--radius-lg) - 6px)!important;
+  background:transparent!important;
+}
+.img-frame.fit-media,
+.image-frame.fit-media{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+}
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  height:auto!important;
+  max-height:none!important;
+}
+.game-card .game-thumb{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  aspect-ratio:1 / 1!important;
+  flex:0 0 52px!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.game-card .game-thumb img{
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media (max-width:900px){
+  .page-hero-bg.fit-page-hero img,
+  .page-hero-bg.fit-page-hero.fit-page-wide img{
+    width:100%!important;
+    right:0!important;
+    left:0!important;
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-bg.fit-hero-wide img{
+    object-position:center center!important;
+    opacity:.44!important;
+  }
+  .section-img-placeholder.fit-media{
+    padding:10px!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,360px)!important;
+  }
+}
+@media (max-width:600px){
+  .section-img-placeholder.fit-media{
+    width:100%!important;
+    aspect-ratio:var(--media-ratio)!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,310px)!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "شروط Time4Bets – الحساب والمكافآت والمدفوعات", "description": "ملخص شروط Time4Bets حول أهلية الحساب، قاعدة الحساب الواحد، شروط المكافآت، تحقق المدفوعات، الأنشطة الممنوعة والاستخدام المسؤول.", "url": "../../ar/terms/", "inLanguage": "ar-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "../../ar/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "../../ar/"}, {"@type": "ListItem", "position": 2, "name": "شروط Time4Bets – الحساب والمكافآت والمدفوعات", "item": "../../ar/terms/"}]}</script></head><body dir="rtl" lang="ar"><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="../../ar/"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="../../img/logo.webp" width="360"/></a><nav class="main-nav"><a href="../../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a href="../../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn" href="../../terms/"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn active" href="../../ar/terms/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="../../play-and-win/" rel="nofollow noopener">سجل الآن</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a href="../../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a href="../../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a><a class="btn btn-primary" href="../../play-and-win/" rel="nofollow noopener" style="margin-top:16px">سجل الآن</a></nav><main id="main-content">
-<section class="page-hero hero-legal"><div class="page-hero-bg"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="643" loading="eager" src="../../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../../">الرئيسية</a><span>/</span><span>الشروط</span></div><h1>الشروط والأحكام</h1></div></div></section>
+<section class="page-hero hero-legal"><div class="page-hero-bg fit-page-hero fit-page-wide"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="643" loading="eager" src="../../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../../">الرئيسية</a><span>/</span><span>الشروط</span></div><h1>الشروط والأحكام</h1></div></div></section>
 <section class="section"><div class="container"><div class="legal-content"><span class="legal-updated">آخر تحديث: 2026</span><p>هذه الصفحة مكتوبة كدليل معلوماتي واضح حول Time4Bets، وتشرح ما يجب فهمه قبل إنشاء حساب أو استخدام المدفوعات أو قبول عروض أو اللعب.</p><h2>1. الأهلية</h2><p>استخدام Time4Bets مخصص للبالغين فقط. المستخدم مسؤول عن فحص القواعد المحلية والتأكد من قانونية اللعب بالنسبة له.</p><h2>2. حساب واحد</h2><p>ينبغي لكل شخص استخدام حساب واحد فقط. الحسابات المكررة أو البيانات غير الصحيحة قد تؤخر التحقق أو تلغي المكافآت.</p><h2>3. شروط المكافآت</h2><p>قد تشمل العروض رهانات مطلوبة، مدة صلاحية، حد رهان أقصى، ألعاب مستبعدة وقيود سحب. اقرأ الشروط قبل القبول.</p><h2>4. المدفوعات والتحقق</h2><p>يجب أن تكون طرق الإيداع والسحب باسم صاحب الحساب. قد يطلب Time4Bets إثبات هوية أو عنوان أو ملكية دفع.</p><h2>5. نشاط ممنوع</h2><p>الاحتيال، تعدد الحسابات، إساءة استخدام الدفع، اللعب الآلي أو التلاعب بالمكافآت قد يؤدي إلى مراجعة الحساب.</p><h2>6. الاستخدام المسؤول</h2><p>حدد الميزانية، لا تطارد الخسائر، تعامل مع اللعب كترفيه واستخدم الحدود أو الاستراحة عند الحاجة.</p><h2>7. تحديث الشروط</h2><p>يمكن أن تتغير الشروط. راجع النسخة الحالية قبل التسجيل أو الإيداع أو استخدام عرض.</p></div></div></section>
 <div class="divider"></div>
 <section class="section"><div class="container"><div class="text-center"><h2 class="section-title">أسئلة <span class="text-accent">Time4Bets</span></h2></div><div class="faq-list" style="max-width:840px;margin:40px auto 0;"><div class="faq-item"><div class="faq-q">هل هذا بديل للشروط الرسمية؟</div><div class="faq-a">لا. هذه صفحة شرح مبسطة، ويجب دائماً مراجعة القواعد الحالية قبل التسجيل أو الإيداع أو قبول المكافأة.</div></div><div class="faq-item"><div class="faq-q">لماذا التحقق مهم؟</div><div class="faq-a">لأنه يساعد على تأكيد العمر والهوية وملكية طريقة الدفع، خصوصاً قبل السحب.</div></div><div class="faq-item"><div class="faq-q">هل يمكن أن تتغير القواعد؟</div><div class="faq-a">نعم. شروط الدفع والمكافآت ومتطلبات الحساب يمكن تحديثها، لذلك يجب مراجعتها قبل أي إجراء.</div></div></div></div></section>

@@ -233,8 +233,172 @@ main div[style*="overflow:hidden"] > img {
     max-height: none !important;
   }
 }
+
+
+/* === FINAL IMAGE FIT PATCH: keeps every img fully visible inside its real layout block === */
+.hero-bg.fit-hero-wide,
+.page-hero-bg.fit-page-hero{
+  display:block!important;
+  background:radial-gradient(circle at 78% 50%,rgba(0,200,150,.14),rgba(7,20,14,.94) 52%,rgba(7,20,14,1) 100%)!important;
+}
+.hero-bg.fit-hero-wide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero img{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  width:min(58vw,760px)!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero.fit-page-wide img{
+  width:min(74vw,980px)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide img{
+  object-position:left center!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero img{
+  right:auto!important;
+  left:0!important;
+  object-position:left center!important;
+}
+.hero-bg.fit-hero-wide::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+.page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+.img-section{
+  align-items:center!important;
+}
+.section-img-placeholder.fit-media,
+.img-frame.fit-media,
+.image-frame.fit-media{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border-radius:var(--radius-lg)!important;
+  border:1px solid var(--border)!important;
+  background:radial-gradient(circle at center,rgba(0,200,150,.12),rgba(15,36,25,.96) 62%,rgba(7,20,14,.98) 100%)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.34)!important;
+}
+.section-img-placeholder.fit-media{
+  --media-ratio:1000 / 686;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:var(--media-ratio)!important;
+  padding:14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+}
+.section-img-placeholder.fit-standard{--media-ratio:1000 / 686;}
+.section-img-placeholder.fit-wide{--media-ratio:1500 / 576;}
+.section-img-placeholder.fit-banner{--media-ratio:1100 / 550;}
+.section-img-placeholder.fit-phone{
+  --media-ratio:800 / 1071;
+  width:min(100%,430px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:16px!important;
+}
+.section-img-placeholder.fit-media>img,
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:calc(var(--radius-lg) - 6px)!important;
+  background:transparent!important;
+}
+.img-frame.fit-media,
+.image-frame.fit-media{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+}
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  height:auto!important;
+  max-height:none!important;
+}
+.game-card .game-thumb{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  aspect-ratio:1 / 1!important;
+  flex:0 0 52px!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.game-card .game-thumb img{
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media (max-width:900px){
+  .page-hero-bg.fit-page-hero img,
+  .page-hero-bg.fit-page-hero.fit-page-wide img{
+    width:100%!important;
+    right:0!important;
+    left:0!important;
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-bg.fit-hero-wide img{
+    object-position:center center!important;
+    opacity:.44!important;
+  }
+  .section-img-placeholder.fit-media{
+    padding:10px!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,360px)!important;
+  }
+}
+@media (max-width:600px){
+  .section-img-placeholder.fit-media{
+    width:100%!important;
+    aspect-ratio:var(--media-ratio)!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,310px)!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Time4Bets Terms – Account Rules, Bonuses & Payments", "description": "Clear Time4Bets terms overview covering account eligibility, one-account rules, bonus conditions, payment verification, prohibited activity and responsible use.", "url": "../terms/", "inLanguage": "en-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "../"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "../"}, {"@type": "ListItem", "position": 2, "name": "Time4Bets Terms – Account Rules, Bonuses & Payments", "item": "../terms/"}]}</script></head><body><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="../"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="../img/logo.webp" width="360"/></a><nav class="main-nav"><a href="../"><span class="nav-icon">🏠</span>Home</a><a href="../app/"><span class="nav-icon">📱</span>App</a><a href="../register/"><span class="nav-icon">✍️</span>Register</a><a href="../withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="../review/"><span class="nav-icon">⭐</span>Review</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn active" href="../terms/"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn" href="../ar/terms/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener">Register Now</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a href="../"><span class="nav-icon">🏠</span>Home</a><a href="../app/"><span class="nav-icon">📱</span>App</a><a href="../register/"><span class="nav-icon">✍️</span>Register</a><a href="../withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="../review/"><span class="nav-icon">⭐</span>Review</a><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener" style="margin-top:16px">Register Now</a></nav><main id="main-content">
-<section class="page-hero hero-legal"><div class="page-hero-bg"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="643" loading="eager" src="../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../">Home</a><span>/</span><span>Terms</span></div><h1>Terms &amp; Conditions</h1></div></div></section>
+<section class="page-hero hero-legal"><div class="page-hero-bg fit-page-hero fit-page-wide"><img alt="" aria-hidden="true" decoding="async" fetchpriority="high" height="643" loading="eager" src="../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="page-hero-inner"><div class="breadcrumb"><a href="../">Home</a><span>/</span><span>Terms</span></div><h1>Terms &amp; Conditions</h1></div></div></section>
 <section class="section"><div class="container"><div class="legal-content"><span class="legal-updated">Last updated: 2026</span><p>This page is written as a readable Time4Bets information guide. It explains the points visitors should understand before creating an account, using payments, claiming promotions or playing.</p><h2>1. Eligibility</h2><p>Time4Bets access is intended for adults only. Users are responsible for checking local rules and confirming that online betting or casino play is legal for them.</p><h2>2. One account rule</h2><p>Each person should use only one account. Duplicate accounts, shared profiles or false details can lead to verification delays, bonus cancellation or restricted access.</p><h2>3. Bonus conditions</h2><p>Promotions may include wagering requirements, expiry dates, maximum bet limits, excluded games and withdrawal restrictions. Read the full terms before claiming any offer.</p><h2>4. Payments and verification</h2><p>Deposits and withdrawals should use payment methods owned by the account holder. Time4Bets may request identity, address or payment proof before processing cashout.</p><h2>5. Prohibited activity</h2><p>Fraud, collusion, multi-accounting, payment abuse, automated play, bonus manipulation and attempts to bypass restrictions can lead to account review.</p><h2>6. Responsible use</h2><p>Users should set a budget, avoid chasing losses, keep play recreational and use limits or breaks when gambling stops feeling controlled.</p><h2>7. Updates to terms</h2><p>Terms can change. Players should review the current version before registering, claiming a promotion or making a payment.</p></div></div></section>
 <div class="divider"></div>
 <section class="section"><div class="container"><div class="text-center"><h2 class="section-title">Time4Bets <span class="text-accent">FAQ</span></h2></div><div class="faq-list" style="max-width:840px;margin:40px auto 0;"><div class="faq-item"><div class="faq-q">Does this replace the official terms?</div><div class="faq-a">No. This page is a readable guide. Always check the current official rules before registering, depositing or claiming a bonus.</div></div><div class="faq-item"><div class="faq-q">Why are verification checks important?</div><div class="faq-a">They help confirm age, identity and payment ownership, especially before withdrawals.</div></div><div class="faq-item"><div class="faq-q">Can rules change over time?</div><div class="faq-a">Yes. Payment rules, bonus terms and account requirements can be updated, so users should review current conditions before acting.</div></div></div></div></section>

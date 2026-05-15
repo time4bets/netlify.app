@@ -233,13 +233,177 @@ main div[style*="overflow:hidden"] > img {
     max-height: none !important;
   }
 }
+
+
+/* === FINAL IMAGE FIT PATCH: keeps every img fully visible inside its real layout block === */
+.hero-bg.fit-hero-wide,
+.page-hero-bg.fit-page-hero{
+  display:block!important;
+  background:radial-gradient(circle at 78% 50%,rgba(0,200,150,.14),rgba(7,20,14,.94) 52%,rgba(7,20,14,1) 100%)!important;
+}
+.hero-bg.fit-hero-wide img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero img{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  width:min(58vw,760px)!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.82!important;
+}
+.page-hero-bg.fit-page-hero.fit-page-wide img{
+  width:min(74vw,980px)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide img{
+  object-position:left center!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero img{
+  right:auto!important;
+  left:0!important;
+  object-position:left center!important;
+}
+.hero-bg.fit-hero-wide::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+body[dir="rtl"] .hero-bg.fit-hero-wide::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.82) 46%,rgba(7,20,14,.36) 100%)!important;
+}
+.page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+body[dir="rtl"] .page-hero-bg.fit-page-hero::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.86) 48%,rgba(7,20,14,.44) 100%)!important;
+}
+.img-section{
+  align-items:center!important;
+}
+.section-img-placeholder.fit-media,
+.img-frame.fit-media,
+.image-frame.fit-media{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  border-radius:var(--radius-lg)!important;
+  border:1px solid var(--border)!important;
+  background:radial-gradient(circle at center,rgba(0,200,150,.12),rgba(15,36,25,.96) 62%,rgba(7,20,14,.98) 100%)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.34)!important;
+}
+.section-img-placeholder.fit-media{
+  --media-ratio:1000 / 686;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:var(--media-ratio)!important;
+  padding:14px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:0!important;
+}
+.section-img-placeholder.fit-standard{--media-ratio:1000 / 686;}
+.section-img-placeholder.fit-wide{--media-ratio:1500 / 576;}
+.section-img-placeholder.fit-banner{--media-ratio:1100 / 550;}
+.section-img-placeholder.fit-phone{
+  --media-ratio:800 / 1071;
+  width:min(100%,430px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:16px!important;
+}
+.section-img-placeholder.fit-media>img,
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  border-radius:calc(var(--radius-lg) - 6px)!important;
+  background:transparent!important;
+}
+.img-frame.fit-media,
+.image-frame.fit-media{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+}
+.img-frame.fit-media>img,
+.image-frame.fit-media>img{
+  height:auto!important;
+  max-height:none!important;
+}
+.game-card .game-thumb{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  min-height:52px!important;
+  max-height:52px!important;
+  aspect-ratio:1 / 1!important;
+  flex:0 0 52px!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+.game-card .game-thumb img{
+  width:32px!important;
+  height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+@media (max-width:900px){
+  .page-hero-bg.fit-page-hero img,
+  .page-hero-bg.fit-page-hero.fit-page-wide img{
+    width:100%!important;
+    right:0!important;
+    left:0!important;
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-bg.fit-hero-wide img{
+    object-position:center center!important;
+    opacity:.44!important;
+  }
+  .section-img-placeholder.fit-media{
+    padding:10px!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,360px)!important;
+  }
+}
+@media (max-width:600px){
+  .section-img-placeholder.fit-media{
+    width:100%!important;
+    aspect-ratio:var(--media-ratio)!important;
+  }
+  .section-img-placeholder.fit-phone{
+    width:min(100%,310px)!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "دليل Time4Bets للإمارات – الرياضة والكازينو والتطبيق", "description": "دليل عملي عن Time4Bets للاعبين في الإمارات: المراهنات الرياضية، ألعاب الكازينو، التطبيق، التسجيل، المدفوعات، المكافآت واللعب المسؤول.", "url": "../ar/", "inLanguage": "ar-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "../ar/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "../ar/"}]}</script></head><body dir="rtl" lang="ar"><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="../ar/"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="../img/logo.webp" width="360"/></a><nav class="main-nav"><a class="active" href="../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a href="../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn" href="../"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn active" href="../ar/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener">سجل الآن</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a class="active" href="../ar/"><span class="nav-icon">🏠</span>الرئيسية</a><a href="../ar/app/"><span class="nav-icon">📱</span>التطبيق</a><a href="../ar/register/"><span class="nav-icon">✍️</span>التسجيل</a><a href="../ar/withdrawal/"><span class="nav-icon">💳</span>السحب</a><a href="../ar/review/"><span class="nav-icon">⭐</span>المراجعة</a><a class="btn btn-primary" href="../play-and-win/" rel="nofollow noopener" style="margin-top:16px">سجل الآن</a></nav><main id="main-content">
-<section class="hero hero-home"><div class="hero-bg"><img alt="دليل Time4Bets للرياضة والكازينو" decoding="async" fetchpriority="high" height="643" loading="eager" src="../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="hero-inner"><div class="hero-badge">دليل للاعبين في الإمارات</div><h1 class="hero-title">Time4Bets <span>دليل المراهنات</span></h1><p class="hero-text">هذا الدليل يساعدك على فهم Time4Bets قبل إنشاء الحساب: الأسواق الرياضية، ألعاب الكازينو، الوصول عبر الهاتف، المدفوعات، شروط المكافآت وأدوات اللعب المسؤول.</p><div class="hero-buttons"><a class="btn btn-primary btn-lg" href="../play-and-win/" rel="nofollow noopener">ابدأ بأمان</a><a class="btn btn-outline btn-lg" href="review/">اقرأ المراجعة</a></div><div class="hero-stats"><div class="hero-stat"><strong>رياضة</strong><span>مباشر وقبل المباراة</span></div><div class="hero-stat"><strong>كازينو</strong><span>سلوتس وطاولات مباشرة</span></div><div class="hero-stat"><strong>جوال</strong><span>وصول سريع</span></div></div></div></div></section>
+<section class="hero hero-home"><div class="hero-bg fit-hero-wide"><img alt="دليل Time4Bets للرياضة والكازينو" decoding="async" fetchpriority="high" height="643" loading="eager" src="../img/hero-banner.webp" width="1500"/></div><div class="container"><div class="hero-inner"><div class="hero-badge">دليل للاعبين في الإمارات</div><h1 class="hero-title">Time4Bets <span>دليل المراهنات</span></h1><p class="hero-text">هذا الدليل يساعدك على فهم Time4Bets قبل إنشاء الحساب: الأسواق الرياضية، ألعاب الكازينو، الوصول عبر الهاتف، المدفوعات، شروط المكافآت وأدوات اللعب المسؤول.</p><div class="hero-buttons"><a class="btn btn-primary btn-lg" href="../play-and-win/" rel="nofollow noopener">ابدأ بأمان</a><a class="btn btn-outline btn-lg" href="review/">اقرأ المراجعة</a></div><div class="hero-stats"><div class="hero-stat"><strong>رياضة</strong><span>مباشر وقبل المباراة</span></div><div class="hero-stat"><strong>كازينو</strong><span>سلوتس وطاولات مباشرة</span></div><div class="hero-stat"><strong>جوال</strong><span>وصول سريع</span></div></div></div></div></section>
 <section class="section"><div class="container"><div class="text-center"><h2 class="section-title">خريطة قرار <span class="text-accent">Time4Bets</span></h2><p class="section-sub">تم ترتيب الصفحة كقائمة فحص عملية حتى تعرف ما يجب مراجعته قبل التسجيل أو الإيداع.</p></div><div class="bonus-grid"><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">إعداد الحساب</div><div class="bonus-num">01</div><div class="bonus-title">التسجيل</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">استخدم بيانات حقيقية</li><li class="bonus-item">جهّز وثائق التحقق</li><li class="bonus-item">استخدم حساباً واحداً فقط</li></ul><a class="btn btn-outline" href="register/">دليل التسجيل</a></div></div><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">مراجعة العرض</div><div class="bonus-num">02</div><div class="bonus-title">المكافآت</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">راجع الرهانات المطلوبة</li><li class="bonus-item">افحص الألعاب المؤهلة</li><li class="bonus-item">انتبه لمدة الصلاحية</li></ul><a class="btn btn-outline" href="review/">مراجعة الشروط</a></div></div><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">تخطيط الدفع</div><div class="bonus-num">03</div><div class="bonus-title">السحب</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">أكمل KYC مبكراً</li><li class="bonus-item">استخدم طريقة دفع باسمك</li><li class="bonus-item">راجع الحدود والوقت</li></ul><a class="btn btn-outline" href="withdrawal/">دليل السحب</a></div></div></div></div></section>
 <div class="divider"></div>
-<section class="section bg-alt"><div class="container"><div class="img-section"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">المراهنات الرياضية</div><h2>تغطية رياضية <span class="text-accent">واضحة</span></h2><p>لا يكفي عدد المباريات وحده لتقييم القسم الرياضي. المهم هو وضوح تغير الأسعار، مؤقتات المباريات، فلاتر الأسواق، قواعد التسوية وسهولة مراجعة سجل الرهانات.</p><p>المراهنات المباشرة تحتاج قراراً سريعاً، لذلك يجب تحديد الميزانية قبل بداية الجلسة وعدم الاعتماد على الكاش آوت إلا بعد التأكد من توفره.</p><ul class="check-list"><li>راجع نوع السوق قبل وضع الرهان.</li><li>تأكد من حدود الرهان والكاش آوت.</li><li>استخدم ميزانية ثابتة للجلسة.</li><li>لا تطارد الخسائر أثناء المباريات الحية.</li></ul></div><div class="section-img-placeholder"><img alt="أسواق Time4Bets الرياضية" decoding="async" height="686" loading="lazy" src="../img/sports-betting.webp" width="1000"/></div></div></div></section>
+<section class="section bg-alt"><div class="container"><div class="img-section"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">المراهنات الرياضية</div><h2>تغطية رياضية <span class="text-accent">واضحة</span></h2><p>لا يكفي عدد المباريات وحده لتقييم القسم الرياضي. المهم هو وضوح تغير الأسعار، مؤقتات المباريات، فلاتر الأسواق، قواعد التسوية وسهولة مراجعة سجل الرهانات.</p><p>المراهنات المباشرة تحتاج قراراً سريعاً، لذلك يجب تحديد الميزانية قبل بداية الجلسة وعدم الاعتماد على الكاش آوت إلا بعد التأكد من توفره.</p><ul class="check-list"><li>راجع نوع السوق قبل وضع الرهان.</li><li>تأكد من حدود الرهان والكاش آوت.</li><li>استخدم ميزانية ثابتة للجلسة.</li><li>لا تطارد الخسائر أثناء المباريات الحية.</li></ul></div><div class="section-img-placeholder fit-media fit-standard"><img alt="أسواق Time4Bets الرياضية" decoding="async" height="686" loading="lazy" src="../img/sports-betting.webp" width="1000"/></div></div></div></section>
 <div class="divider"></div>
-<section class="section"><div class="container"><div class="img-section reverse"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">كازينو</div><h2>ألعاب الكازينو <span class="text-accent">حسب الاستخدام</span></h2><p>السلوتس مناسبة للجولات السريعة واختبار شروط المكافآت. البلاك جاك يحتاج معرفة بالقواعد، والروليت أسهل في المتابعة، أما ألعاب الديلر المباشر فهي أبطأ وأكثر تركيزاً على تجربة الاستوديو.</p><p>قبل استخدام أي مكافأة، افحص هل اللعبة تساهم بالكامل أو جزئياً أو لا تساهم في متطلبات الرهان.</p></div><div class="section-img-placeholder"><img alt="كازينو Time4Bets المباشر" decoding="async" height="576" loading="lazy" src="../img/live-casino.webp" width="1500"/></div></div></div></section>
+<section class="section"><div class="container"><div class="img-section reverse"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">كازينو</div><h2>ألعاب الكازينو <span class="text-accent">حسب الاستخدام</span></h2><p>السلوتس مناسبة للجولات السريعة واختبار شروط المكافآت. البلاك جاك يحتاج معرفة بالقواعد، والروليت أسهل في المتابعة، أما ألعاب الديلر المباشر فهي أبطأ وأكثر تركيزاً على تجربة الاستوديو.</p><p>قبل استخدام أي مكافأة، افحص هل اللعبة تساهم بالكامل أو جزئياً أو لا تساهم في متطلبات الرهان.</p></div><div class="section-img-placeholder fit-media fit-wide"><img alt="كازينو Time4Bets المباشر" decoding="async" height="576" loading="lazy" src="../img/live-casino.webp" width="1500"/></div></div></div></section>
 <div class="divider"></div>
 <section class="section bg-alt"><div class="container"><div class="cta-strip"><h2>ابدأ بعد <span class="text-accent">الفحص</span></h2><p>تابع فقط بعد مراجعة قواعد الحساب، شروط المكافآت، طريقة الدفع وحدود اللعب المسؤول.</p><a class="btn btn-primary btn-lg" href="../play-and-win/" rel="nofollow noopener">تابع</a></div></div></section>
 <div class="divider"></div>
