@@ -140,3 +140,97 @@
     max-width:100%!important;
   }
 }
+
+
+/* === Global image containment patch === */
+.site-header .logo img,
+.site-footer .logo img,
+.logo img {
+  object-fit: contain !important;
+}
+.hero-bg,
+.page-hero-bg {
+  background: radial-gradient(circle at 78% 50%, rgba(0,200,150,.12), rgba(7,20,14,.92) 48%, rgba(7,20,14,1) 100%) !important;
+}
+.hero-bg img,
+.page-hero-bg img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  opacity: .78 !important;
+  filter: saturate(1.08) contrast(1.04) !important;
+}
+body[dir="rtl"] .hero-bg img,
+body[dir="rtl"] .page-hero-bg img {
+  object-position: left center !important;
+}
+.hero-bg::after {
+  background: linear-gradient(90deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.78) 48%,rgba(7,20,14,.34) 100%) !important;
+}
+body[dir="rtl"] .hero-bg::after {
+  background: linear-gradient(270deg,rgba(7,20,14,.98) 0%,rgba(7,20,14,.78) 48%,rgba(7,20,14,.34) 100%) !important;
+}
+.page-hero-bg::after {
+  background: linear-gradient(135deg,rgba(7,20,14,.97) 0%,rgba(7,20,14,.76) 55%,rgba(7,20,14,.38) 100%) !important;
+}
+.section-img-placeholder {
+  min-height: 360px !important;
+  height: auto !important;
+  aspect-ratio: 16 / 10 !important;
+  padding: 14px !important;
+  background: radial-gradient(circle at center, rgba(0,200,150,.12), rgba(15,36,25,.94) 58%) !important;
+}
+.section-img-placeholder img,
+.img-section img,
+.section-img,
+.game-thumb img,
+main section img:not(.logo img) {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+.section-img-placeholder img {
+  height: 100% !important;
+  max-height: 520px !important;
+  border-radius: calc(var(--radius-lg) - 4px) !important;
+  background: rgba(7,20,14,.42) !important;
+}
+.game-thumb {
+  height: auto !important;
+  min-height: 160px !important;
+  aspect-ratio: 16 / 10 !important;
+}
+.game-thumb img {
+  height: 100% !important;
+}
+.img-frame,
+.image-frame,
+main div[style*="overflow:hidden"]:has(> img) {
+  background: linear-gradient(135deg, rgba(15,36,25,.95), rgba(7,20,14,.95)) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.32) !important;
+}
+main div[style*="overflow:hidden"] > img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+@media (max-width:700px){
+  .hero-bg img,
+  .page-hero-bg img {
+    object-position: center bottom !important;
+    opacity: .36 !important;
+  }
+  .section-img-placeholder {
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+    padding: 10px !important;
+  }
+  .section-img-placeholder img {
+    height: auto !important;
+    max-height: none !important;
+  }
+}
