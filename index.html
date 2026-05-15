@@ -430,8 +430,86 @@ body[dir="rtl"] .page-hero-inner{text-align:right;}
   .hero-stats{gap:18px!important;}
   .hero-text,.page-hero-text,.editorial-extra .section-content p{font-size:15px!important;line-height:1.78!important;}
 }
+
+
+/* === HOME HERO IMAGE: homepage only === */
+.hero-home-image{
+  min-height:560px!important;
+  display:flex!important;
+  align-items:center!important;
+  background:#07140e!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.hero-home-image .container{
+  position:relative!important;
+  z-index:2!important;
+  width:100%!important;
+}
+.hero-home-image .hero-home-bg{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:#07140e!important;
+}
+.hero-home-image .hero-home-bg img{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  opacity:.88!important;
+}
+.hero-home-image .hero-home-bg::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(90deg,rgba(7,20,14,.97) 0%,rgba(7,20,14,.87) 42%,rgba(7,20,14,.38) 100%)!important;
+}
+.hero-home-image .hero-inner{
+  position:relative!important;
+  z-index:2!important;
+  max-width:600px!important;
+  padding:86px 0!important;
+  margin-left:0!important;
+  margin-right:auto!important;
+  text-align:left!important;
+}
+body[dir="rtl"] .hero-home-image .hero-inner{
+  margin-left:auto!important;
+  margin-right:0!important;
+  text-align:right!important;
+}
+body[dir="rtl"] .hero-home-image .hero-home-bg::after{
+  background:linear-gradient(270deg,rgba(7,20,14,.97) 0%,rgba(7,20,14,.87) 42%,rgba(7,20,14,.38) 100%)!important;
+}
+@media (max-width:900px){
+  .hero-home-image{min-height:auto!important;}
+  .hero-home-image .hero-home-bg img{
+    object-position:center center!important;
+    opacity:.34!important;
+  }
+  .hero-home-image .hero-home-bg::after,
+  body[dir="rtl"] .hero-home-image .hero-home-bg::after{
+    background:linear-gradient(180deg,rgba(7,20,14,.96) 0%,rgba(7,20,14,.92) 100%)!important;
+  }
+  .hero-home-image .hero-inner{
+    max-width:100%!important;
+    padding:64px 0!important;
+  }
+}
+
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Time4Bets UAE Guide – Sportsbook, Casino, App & Payments", "description": "Practical Time4Bets guide for UAE players: sports betting, casino games, app access, registration steps, payment checks, bonuses and safer play notes.", "url": "./", "inLanguage": "en-AE", "isPartOf": {"@type": "WebSite", "name": "Time4Bets", "url": "./"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "./"}]}</script></head><body><header class="site-header"><div class="container"><div class="header-inner"><a class="logo" href="./"><img alt="Time4Bets logo" decoding="async" fetchpriority="high" height="120" src="img/logo.webp" width="360"/></a><nav class="main-nav"><a class="active" href="./"><span class="nav-icon">🏠</span>Home</a><a href="app/"><span class="nav-icon">📱</span>App</a><a href="register/"><span class="nav-icon">✍️</span>Register</a><a href="withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="review/"><span class="nav-icon">⭐</span>Review</a></nav><div class="header-right"><div class="lang-switcher"><a class="lang-btn active" href="./"><span class="lang-flag">🇬🇧</span>EN</a><a class="lang-btn" href="ar/"><span class="lang-flag">🇦🇪</span>AR</a></div><a class="btn btn-primary" href="play-and-win/" rel="nofollow noopener">Register Now</a><div class="hamburger"><span></span><span></span><span></span></div></div></div></div></header><nav class="mobile-nav" id="mobileNav"><a class="active" href="./"><span class="nav-icon">🏠</span>Home</a><a href="app/"><span class="nav-icon">📱</span>App</a><a href="register/"><span class="nav-icon">✍️</span>Register</a><a href="withdrawal/"><span class="nav-icon">💳</span>Withdrawal</a><a href="review/"><span class="nav-icon">⭐</span>Review</a><a class="btn btn-primary" href="play-and-win/" rel="nofollow noopener" style="margin-top:16px">Register Now</a></nav><main id="main-content">
-<section class="hero hero-home"><div class="container"><div class="hero-inner"><div class="hero-badge">UAE player guide</div><h1 class="hero-title">Time4Bets <span>Betting Hub</span></h1><p class="hero-text">Use this guide as a practical first check before opening a Time4Bets account. It explains sports markets, casino categories, mobile access, payment preparation, bonus rules and safer gambling tools in one clear path.</p><div class="hero-buttons"><a class="btn btn-primary btn-lg" href="play-and-win/" rel="nofollow noopener">Start Securely</a><a class="btn btn-outline btn-lg" href="review/">Read Review</a></div><div class="hero-stats"><div class="hero-stat"><strong>Sports</strong><span>Live &amp; pre-match</span></div><div class="hero-stat"><strong>Casino</strong><span>Slots &amp; live tables</span></div><div class="hero-stat"><strong>Mobile</strong><span>App-style access</span></div></div></div></div></section>
+<section class="hero hero-home-image">
+<div class="hero-bg hero-home-bg">
+<img src="img/hero-banner.webp" width="1500" height="643" alt="Time4Bets casino and betting platform preview" fetchpriority="high" decoding="async"/>
+</div>
+<div class="container">
+<div class="hero-inner"><div class="hero-badge">UAE player guide</div><h1 class="hero-title">Time4Bets <span>Betting Hub</span></h1><p class="hero-text">Use this guide as a practical first check before opening a Time4Bets account. It explains sports markets, casino categories, mobile access, payment preparation, bonus rules and safer gambling tools in one clear path.</p><div class="hero-buttons"><a class="btn btn-primary btn-lg" href="play-and-win/" rel="nofollow noopener">Start Securely</a><a class="btn btn-outline btn-lg" href="review/">Read Review</a></div><div class="hero-stats"><div class="hero-stat"><strong>Sports</strong><span>Live &amp; pre-match</span></div><div class="hero-stat"><strong>Casino</strong><span>Slots &amp; live tables</span></div><div class="hero-stat"><strong>Mobile</strong><span>App-style access</span></div></div></div></div></section>
 <section class="section"><div class="container"><div class="text-center"><h2 class="section-title">Time4Bets <span class="text-accent">Decision Map</span></h2><p class="section-sub">The homepage is organised like a checklist, so visitors can compare the main areas before clicking through to registration or play.</p></div><div class="bonus-grid"><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">Account setup</div><div class="bonus-num">01</div><div class="bonus-title">Registration</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">Use accurate personal details</li><li class="bonus-item">Prepare age and ID checks</li><li class="bonus-item">Choose one account only</li></ul><a class="btn btn-outline" href="register/">Registration guide</a></div></div><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">Offer review</div><div class="bonus-num">02</div><div class="bonus-title">Bonuses</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">Check wagering first</li><li class="bonus-item">Compare eligible games</li><li class="bonus-item">Watch expiry dates</li></ul><a class="btn btn-outline" href="review/">Review terms</a></div></div><div class="bonus-card"><div class="bonus-card-head"><div class="bonus-label">Payment planning</div><div class="bonus-num">03</div><div class="bonus-title">Withdrawals</div></div><div class="bonus-card-body"><ul class="bonus-list"><li class="bonus-item">Finish KYC early</li><li class="bonus-item">Match payment ownership</li><li class="bonus-item">Confirm limits and timing</li></ul><a class="btn btn-outline" href="withdrawal/">Cashout guide</a></div></div></div></div></section>
 <div class="divider"></div>
 <section class="section bg-alt"><div class="container"><div class="img-section"><div class="section-content"><div class="hero-badge" style="margin-bottom:16px">Sportsbook</div><h2>Sports Coverage <span class="text-accent">Explained</span></h2><p>Time4Bets sports betting should be evaluated by more than the number of events listed. A useful sportsbook needs clear odds movement, readable live timers, market filters, settlement rules and simple access to bet history.</p><p>Football, cricket, tennis, basketball and esports can suit different betting styles. Pre-match users usually compare odds calmly, while live betting requires faster decisions and stronger bankroll discipline.</p><ul class="check-list"><li>Use live betting only when you understand the market.</li><li>Check cashout availability before relying on it.</li><li>Review odds format, limits and event timing.</li><li>Keep stake sizes fixed before the match starts.</li></ul><a class="btn btn-primary" href="review/">Read the sportsbook review</a></div><div class="section-img-placeholder fit-media fit-standard"><img alt="Time4Bets sportsbook markets" decoding="async" height="686" loading="lazy" src="img/sports-betting.webp" width="1000"/></div></div></div></section>
